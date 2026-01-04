@@ -1,5 +1,6 @@
 import { Mail, Phone } from "lucide-react";
-import logo from "@/assets/logo.jpeg";
+import { Link } from "react-router-dom";
+import logo from "@/assets/bull-logo.png";
 
 const Footer = () => {
   return (
@@ -26,19 +27,19 @@ const Footer = () => {
             <h4 className="font-semibold text-background mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#home" className="text-background/70 hover:text-background text-sm transition-colors">
+                <Link to="/" className="text-background/70 hover:text-background text-sm transition-colors">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#courses" className="text-background/70 hover:text-background text-sm transition-colors">
+                <Link to="/courses" className="text-background/70 hover:text-background text-sm transition-colors">
                   Courses
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#algo" className="text-background/70 hover:text-background text-sm transition-colors">
+                <Link to="/algo-trading" className="text-background/70 hover:text-background text-sm transition-colors">
                   Algo Trading
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#contact" className="text-background/70 hover:text-background text-sm transition-colors">
@@ -79,14 +80,9 @@ const Footer = () => {
         {/* Divider */}
         <div className="border-t border-background/10 pt-8">
           {/* Disclaimer */}
-          <p className="text-background/50 text-xs text-center mb-4">
+          <p className="text-background/50 text-xs text-center">
             <strong>Disclaimer:</strong> Stock market trading involves risk. Past performance 
             does not guarantee future results. Please trade responsibly.
-          </p>
-          
-          {/* Copyright */}
-          <p className="text-background/50 text-sm text-center">
-            © {new Date().getFullYear()} Shreeji Techno. All rights reserved.
           </p>
         </div>
       </div>

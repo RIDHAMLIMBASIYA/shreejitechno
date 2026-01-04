@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo.jpeg";
+import { Link } from "react-router-dom";
+import logo from "@/assets/bull-logo.png";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "Courses", href: "#courses" },
-  { name: "Algo Trading", href: "#algo" },
-  { name: "Why Us", href: "#why-us" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/", isRoute: true },
+  { name: "Courses", href: "/courses", isRoute: true },
+  { name: "Algo Trading", href: "/algo-trading", isRoute: true },
+  { name: "Why Us", href: "#why-us", isRoute: false },
+  { name: "Contact", href: "#contact", isRoute: false },
 ];
 
 const Header = () => {
@@ -18,24 +19,34 @@ const Header = () => {
       <div className="container">
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <img 
               src={logo} 
               alt="Shreeji Techno Logo" 
               className="h-10 md:h-12 w-auto object-contain"
             />
-          </a>
+            <span className="font-bold text-lg text-foreground">Shreeji Techno</span>
+          </Link>
 
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <a
-                  href={link.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
-                >
-                  {link.name}
-                </a>
+                {link.isRoute ? (
+                  <Link
+                    to={link.href}
+                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a
+                    href={link.href}
+                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
+                  >
+                    {link.name}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
@@ -66,13 +77,23 @@ const Header = () => {
             <ul className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="block py-2 text-foreground font-medium hover:text-primary transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {link.name}
-                  </a>
+                  {link.isRoute ? (
+                    <Link
+                      to={link.href}
+                      className="block py-2 text-foreground font-medium hover:text-primary transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="block py-2 text-foreground font-medium hover:text-primary transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
               <li>
