@@ -1,4 +1,5 @@
 import { CheckCircle, MessageCircle } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const courseFeatures = [
   "Beginner, Intermediate & Advanced Trading Courses",
@@ -10,12 +11,14 @@ const courseFeatures = [
 ];
 
 const Courses = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
+
   return (
     <section id="courses" className="py-20">
-      <div className="container">
+      <div className="container" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div>
+          <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
               Courses & Services
             </span>
@@ -29,7 +32,11 @@ const Courses = () => {
 
             <ul className="space-y-4 mb-8">
               {courseFeatures.map((feature, index) => (
-                <li key={index} className="flex items-start gap-3">
+                <li 
+                  key={index} 
+                  className={`flex items-start gap-3 transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
+                >
                   <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                   <span className="text-foreground">{feature}</span>
                 </li>
@@ -55,7 +62,7 @@ const Courses = () => {
           </div>
 
           {/* Visual */}
-          <div className="relative">
+          <div className={`relative transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
             <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 lg:p-12">
               <div className="space-y-6">
                 <div className="bg-card rounded-xl p-6 shadow-medium border border-border">

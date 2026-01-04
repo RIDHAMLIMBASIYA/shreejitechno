@@ -1,4 +1,5 @@
 import { BookOpen, Target, Users, Headphones } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const reasons = [
   {
@@ -24,10 +25,12 @@ const reasons = [
 ];
 
 const WhyUs = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
+
   return (
     <section id="why-us" className="py-20">
-      <div className="container">
-        <div className="text-center mb-12">
+      <div className="container" ref={ref}>
+        <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
             Why Choose Us
           </span>
@@ -44,7 +47,8 @@ const WhyUs = () => {
           {reasons.map((reason, index) => (
             <div
               key={index}
-              className="flex gap-5 p-6 rounded-xl hover:bg-secondary/50 transition-colors"
+              className={`flex gap-5 p-6 rounded-xl hover:bg-secondary/50 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
                 <reason.icon className="w-7 h-7 text-primary" />
