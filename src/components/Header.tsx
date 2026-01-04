@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/bull-logo.png";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { name: "Home", href: "/", isRoute: true },
@@ -51,24 +52,30 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* Desktop CTA */}
-          <a
-            href="https://wa.me/917874503856?text=Hello%20%F0%9F%91%8B%0AThank%20you%20for%20contacting%20*Shreeji%20Techno*%20%F0%9F%93%88%0A%0AWe%20provide%3A%0A%E2%9C%85%20Stock%20Market%20Courses%0A%E2%9C%85%20Trading%20%26%20Investing%20Guidance%0A%E2%9C%85%20Algo%20Trading%20Solutions%0A%0APlease%20share%3A%0A1)%20Your%20Name%0A2)%20Your%20Experience%20Level%20(Beginner%20%2F%20Intermediate%20%2F%20Advanced)%0A3)%20Your%20Requirement%0A%0AOur%20team%20will%20reply%20shortly."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-medium text-sm rounded-lg hover:bg-primary/90 transition-colors"
-          >
-            Contact Us
-          </a>
+          {/* Desktop CTA & Theme Toggle */}
+          <div className="hidden md:flex items-center gap-3">
+            <ThemeToggle />
+            <a
+              href="https://wa.me/917874503856?text=Hello%20%F0%9F%91%8B%0AThank%20you%20for%20contacting%20*Shreeji%20Techno*%20%F0%9F%93%88%0A%0AWe%20provide%3A%0A%E2%9C%85%20Stock%20Market%20Courses%0A%E2%9C%85%20Trading%20%26%20Investing%20Guidance%0A%E2%9C%85%20Algo%20Trading%20Solutions%0A%0APlease%20share%3A%0A1)%20Your%20Name%0A2)%20Your%20Experience%20Level%20(Beginner%20%2F%20Intermediate%20%2F%20Advanced)%0A3)%20Your%20Requirement%0A%0AOur%20team%20will%20reply%20shortly."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground font-medium text-sm rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              Contact Us
+            </a>
+          </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-foreground"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile Menu Button & Theme Toggle */}
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="p-2 text-foreground"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </nav>
 
         {/* Mobile Navigation */}

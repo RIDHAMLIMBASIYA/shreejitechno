@@ -1,4 +1,5 @@
 import { Bot, Zap, Shield, BarChart3, MessageCircle } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const benefits = [
   {
@@ -24,10 +25,12 @@ const benefits = [
 ];
 
 const AlgoTrading = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
+
   return (
     <section id="algo" className="py-20 bg-foreground text-background">
-      <div className="container">
-        <div className="max-w-3xl mx-auto text-center mb-12">
+      <div className="container" ref={ref}>
+        <div className={`max-w-3xl mx-auto text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary-foreground text-sm font-medium rounded-full mb-4">
             Algo Trading
           </span>
@@ -44,7 +47,8 @@ const AlgoTrading = () => {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="bg-background/5 backdrop-blur-sm p-6 rounded-xl border border-background/10 hover:bg-background/10 transition-colors"
+              className={`bg-background/5 backdrop-blur-sm p-6 rounded-xl border border-background/10 hover:bg-background/10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                 <benefit.icon className="w-6 h-6 text-primary" />
@@ -59,7 +63,7 @@ const AlgoTrading = () => {
           ))}
         </div>
 
-        <div className="text-center">
+        <div className={`text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <a
             href="https://wa.me/917874503856?text=Hi%2C%20I%20am%20interested%20in%20Algo%20Trading%20solutions.%20Please%20share%20the%20details."
             target="_blank"

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Mail, Phone, Send, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -41,12 +41,14 @@ const Contact = () => {
     }
   };
 
+  const { ref, isVisible } = useScrollAnimation(0.1);
+
   return (
     <section id="contact" className="py-20 bg-secondary/50">
-      <div className="container">
+      <div className="container" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
-          <div>
+          <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
               Contact Us
             </span>
@@ -100,7 +102,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-card p-8 rounded-2xl border border-border shadow-medium">
+          <div className={`bg-card p-8 rounded-2xl border border-border shadow-medium transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
             <h3 className="text-xl font-semibold text-foreground mb-6">
               Send us a Message
             </h3>
