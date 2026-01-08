@@ -4,45 +4,45 @@ import logo from "@/assets/bull-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground text-background py-12">
+    <footer className="bg-brand-black text-primary-foreground py-12">
       <div className="container">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
             <a href="#home" className="flex items-center gap-3 mb-4">
-              <img 
-                src={logo} 
-                alt="Shreeji Techno" 
+              <img
+                src={logo}
+                alt="Shreeji Techno"
                 className="h-12 w-auto object-contain bg-background rounded-lg p-1"
               />
             </a>
-            <p className="text-background/70 text-sm leading-relaxed">
-              Professional stock market education, trading mentorship, and 
+            <p className="text-primary-foreground/70 text-sm leading-relaxed">
+              Professional stock market education, trading mentorship, and
               algorithmic trading solutions to help you master the markets.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-background mb-4">Quick Links</h4>
+            <h4 className="font-semibold text-primary-foreground mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-background/70 hover:text-background text-sm transition-colors">
+                <Link to="/" className="text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/courses" className="text-background/70 hover:text-background text-sm transition-colors">
+                <Link to="/courses" className="text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors">
                   Courses
                 </Link>
               </li>
               <li>
-                <Link to="/algo-trading" className="text-background/70 hover:text-background text-sm transition-colors">
+                <Link to="/algo-trading" className="text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors">
                   Algo Trading
                 </Link>
               </li>
               <li>
-                <a href="#contact" className="text-background/70 hover:text-background text-sm transition-colors">
+                <a href="#contact" className="text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors">
                   Contact
                 </a>
               </li>
@@ -51,12 +51,12 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold text-background mb-4">Contact Us</h4>
+            <h4 className="font-semibold text-primary-foreground mb-4">Contact Us</h4>
             <ul className="space-y-3">
               <li>
                 <a
                   href="mailto:shreejitechno45@gmail.com"
-                  className="flex items-center gap-2 text-background/70 hover:text-background text-sm transition-colors"
+                  className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors"
                 >
                   <Mail size={16} />
                   shreejitechno45@gmail.com
@@ -67,7 +67,7 @@ const Footer = () => {
                   href="https://wa.me/917874503856"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-background/70 hover:text-background text-sm transition-colors"
+                  className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors"
                 >
                   <Phone size={16} />
                   +91 7874503856
@@ -78,10 +78,10 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-background/10 pt-8">
+        <div className="border-t border-primary-foreground/10 pt-8">
           {/* Disclaimer */}
-          <p className="text-background/50 text-xs text-center">
-            <strong>Disclaimer:</strong> Stock market trading involves risk. Past performance 
+          <p className="text-primary-foreground/50 text-xs text-center">
+            <strong>Disclaimer:</strong> Stock market trading involves risk. Past performance
             does not guarantee future results. Please trade responsibly.
           </p>
         </div>
