@@ -91,6 +91,13 @@
     --input: 0 0% 20%;
     --ring: 0 78% 50%;
 
+    /* Brand tokens (dark) */
+    --brand-red: 0 78% 50%;
+    --brand-red-light: 0 78% 14%;
+    --brand-black: 0 0% 8%;
+    --brand-gray: 0 0% 70%;
+    --brand-gray-light: 0 0% 12%;
+
     --sidebar-background: 0 0% 8%;
     --sidebar-foreground: 0 0% 95%;
     --sidebar-primary: 0 78% 50%;
