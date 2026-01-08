@@ -28,16 +28,16 @@ const AlgoTrading = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
-    <section id="algo" className="py-20 bg-foreground text-background">
+    <section id="algo" className="py-20 bg-brand-black">
       <div className="container" ref={ref}>
         <div className={`max-w-3xl mx-auto text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary-foreground text-sm font-medium rounded-full mb-4">
+          <span className="inline-block px-4 py-1.5 bg-primary/20 text-primary text-sm font-medium rounded-full mb-4">
             Algo Trading
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary-foreground">
             Automated Trading Solutions
           </h2>
-          <p className="text-background/70 text-lg">
+          <p className="text-primary-foreground/70 text-lg">
             Algorithmic trading uses computer programs to execute trades based on predefined 
             strategies, eliminating emotional decisions and maximizing efficiency.
           </p>
@@ -47,16 +47,16 @@ const AlgoTrading = () => {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className={`bg-background/5 backdrop-blur-sm p-6 rounded-xl border border-background/10 hover:bg-background/10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`bg-primary-foreground/5 backdrop-blur-sm p-6 rounded-xl border border-primary-foreground/10 hover:bg-primary-foreground/10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                 <benefit.icon className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold text-background mb-2">
+              <h3 className="text-lg font-semibold text-primary-foreground mb-2">
                 {benefit.title}
               </h3>
-              <p className="text-background/60 text-sm">
+              <p className="text-primary-foreground/60 text-sm">
                 {benefit.description}
               </p>
             </div>
