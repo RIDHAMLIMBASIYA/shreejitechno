@@ -34,14 +34,32 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
+      const fullPhone = formData.phone ? `${formData.countryCode}${formData.phone}` : "";
+      
+      // Send contact email
       const { data, error } = await supabase.functions.invoke('send-contact-email', {
         body: {
           ...formData,
-          phone: formData.phone ? `${formData.countryCode} ${formData.phone}` : "",
+          phone: fullPhone,
         }
       });
 
       if (error) throw error;
+
+      // Send welcome SMS if phone number is provided
+      if (fullPhone) {
+        try {
+          await supabase.functions.invoke('send-welcome-sms', {
+            body: {
+              phone: fullPhone,
+              name: formData.name,
+            }
+          });
+        } catch (smsError) {
+          console.error("SMS sending failed:", smsError);
+          // Don't block form success if SMS fails
+        }
+      }
 
       toast({
         title: "Message Sent!",
