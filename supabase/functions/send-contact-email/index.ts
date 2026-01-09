@@ -27,6 +27,7 @@ function escapeHtml(text: string): string {
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
   email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  phone: z.string().trim().max(20, "Phone must be less than 20 characters").optional().default(""),
   message: z.string().trim().min(1, "Message is required").max(5000, "Message must be less than 5000 characters"),
 });
 
@@ -53,11 +54,12 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    const { name, email, message } = validationResult.data;
+    const { name, email, phone, message } = validationResult.data;
 
     // Escape HTML entities to prevent XSS in emails
     const safeName = escapeHtml(name);
     const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone);
     const safeMessage = escapeHtml(message);
 
     console.log("Received contact form submission from:", safeEmail);
@@ -77,6 +79,7 @@ const handler = async (req: Request): Promise<Response> => {
           <h1>New Contact Form Submission</h1>
           <p><strong>Name:</strong> ${safeName}</p>
           <p><strong>Email:</strong> ${safeEmail}</p>
+          <p><strong>Phone/WhatsApp:</strong> ${safePhone || 'Not provided'}</p>
           <p><strong>Message:</strong></p>
           <p>${safeMessage.replace(/\n/g, '<br>')}</p>
         `,
